@@ -1,0 +1,9 @@
+.cart-display {
+  position: absolute;
+  top: 50px;
+  right: 0.5rem;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+  background-color: whitesmoke;
+  border-radius: 1rem;
+}
