@@ -9,8 +9,9 @@ import { useNProgress } from 'src/hooks/use-nprogress';
 import { createTheme } from 'src/theme';
 import { createEmotionCache } from 'src/utils/create-emotion-cache';
 import 'simplebar-react/dist/simplebar.min.css';
-import '../sections/companies/ItemList.css'
-import '../sections/companies/cart.css'
+import '../sections/companies/ItemList.css';
+import '../sections/companies/cart.css';
+import './styles/main.css';
 
 const clientSideEmotionCache = createEmotionCache();
 

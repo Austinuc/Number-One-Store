@@ -11,15 +11,15 @@ import EditIcon from "@mui/icons-material/Edit";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import NavigationIcon from "@mui/icons-material/Navigation";
 
-function ProductCard() {
-  const [quantity, setQuantity] = useState(0);
+function ProductItem() {
+  const [quantity, setQuantity] = useState(1);
 
   const handleIncrement = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
 
   const handleDecrement = () => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
@@ -35,7 +35,6 @@ function ProductCard() {
         <Stack
           justifyContent="space-between"
           alignItems="center"
-
           direction={{ xs: "column", sm: "row" }}
           spacing={{ xs: 1, sm: 2, md: 4 }}
         >
@@ -57,13 +56,13 @@ function ProductCard() {
           <Button variant="contained" onClick={handleIncrement}>
             +
           </Button> */}
-          <Fab size="small" color="primary" aria-label="add">
+          <Fab size="small" color="primary" aria-label="add" onClick={handleIncrement}>
             <AddIcon />
           </Fab>
           <Typography variant="body2" color="text.secondary">
             {quantity}
           </Typography>
-          <Fab size="small" color="secondary" aria-label="minus">
+          <Fab size="small" color="secondary" aria-label="minus" onClick={handleDecrement}>
             <RemoveIcon />
           </Fab>
         </Stack>
@@ -76,20 +75,20 @@ function ProductCard() {
   );
 }
 
-export default ProductCard;
+export default ProductItem;
 
- <Box sx={{ "& > :not(style)": { m: 1 } }}>
-   <Fab color="primary" aria-label="add">
-     <AddIcon />
-   </Fab>
-   <Fab color="secondary" aria-label="minus">
-     <EditIcon />
-   </Fab>
-   <Fab variant="extended">
-     <NavigationIcon sx={{ mr: 1 }} />
-     Navigate
-   </Fab>
-   <Fab disabled aria-label="like">
-     <FavoriteIcon />
-   </Fab>
- </Box>;
+//  <Box sx={{ "& > :not(style)": { m: 1 } }}>
+//    <Fab color="primary" aria-label="add">
+//      <AddIcon />
+//    </Fab>
+//    <Fab color="secondary" aria-label="minus">
+//      <EditIcon />
+//    </Fab>
+//    <Fab variant="extended">
+//      <NavigationIcon sx={{ mr: 1 }} />
+//      Navigate
+//    </Fab>
+//    <Fab disabled aria-label="like">
+//      <FavoriteIcon />
+//    </Fab>
+//  </Box>;

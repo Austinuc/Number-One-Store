@@ -18,6 +18,7 @@ import { alpha } from '@mui/material/styles';
 import { usePopover } from 'src/hooks/use-popover';
 import { AccountPopover } from './account-popover';
 import Cart from 'src/sections/companies/cart';
+import { useState } from 'react';
 
 const SIDE_NAV_WIDTH = 280;
 const TOP_NAV_HEIGHT = 64;
@@ -36,6 +37,8 @@ export const TopNav = (props) => {
   
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
   const accountPopover = usePopover();
+
+  const [badgeCount, setBadgeCount] = useState(0);
 
   
 
@@ -91,7 +94,7 @@ export const TopNav = (props) => {
                 </SvgIcon>
               </IconButton>
             </Tooltip>
-            <Tooltip title="Notifications">
+            {/* <Tooltip title="Notifications">
               <IconButton onClick={togleCart}>
                 <Badge badgeContent={4} color="success" variant="dot">
                   <SvgIcon fontSize="small">
@@ -99,8 +102,15 @@ export const TopNav = (props) => {
                   </SvgIcon>
                 </Badge>
               </IconButton>
+            </Tooltip> */}
+            <Tooltip title="Cart">
+              <IconButton aria-label="cart">
+                <Badge badgeContent={badgeCount} color="secondary">
+                  <Cart setBadgeCount={setBadgeCount} badgeCount={badgeCount}/>
+                </Badge>
+              </IconButton>
             </Tooltip>
-            <Cart />
+
             <Avatar
               onClick={accountPopover.handleOpen}
               ref={accountPopover.anchorRef}

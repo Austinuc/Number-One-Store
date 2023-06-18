@@ -10,8 +10,10 @@ import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
 import { CustomersTable } from 'src/sections/customer/customers-table';
 import { CustomersSearch } from 'src/sections/customer/customers-search';
 import { applyPagination } from 'src/utils/apply-pagination';
-import { ItemList } from 'src/sections/companies/item-lists';
-import ProductCard from 'src/sections/companies/productCard';
+import  ItemList  from 'src/sections/companies/item-lists';
+import ProductItem from 'src/sections/companies/product-item';
+import AddItem from 'src/layouts/forms/add-item';
+import { Close } from '@mui/icons-material';
 
 const now = new Date();
 
@@ -197,6 +199,12 @@ const Page = () => {
     []
   );
 
+  const [showPopup, setShowPopup] = useState(false);
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
   return (
     <>
       <Head>
@@ -218,22 +226,23 @@ const Page = () => {
               <div>
                 <Button
                   startIcon={
-                    <SvgIcon fontSize="small">
-                      <PlusIcon />
-                    </SvgIcon>
+                    <SvgIcon fontSize="small">{showPopup ? <Close /> : <PlusIcon />}</SvgIcon>
                   }
                   variant="contained"
+                  onClick={togglePopup}
                 >
-                  Add
+                  {showPopup ? "Close" : "Add Item"}
+                  {/* Add */}
                 </Button>
               </div>
             </Stack>
+            {showPopup && <AddItem />}
             <CustomersSearch />
 
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            <ProductItem />
+            <ProductItem />
+            <ProductItem />
+            <ProductItem />
           </Stack>
         </Container>
       </Box>
