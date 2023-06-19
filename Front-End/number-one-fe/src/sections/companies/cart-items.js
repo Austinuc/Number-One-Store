@@ -6,16 +6,23 @@ import {
   ListItemSecondaryAction,
   IconButton,
   Divider,
+  Chip,
   Container,
   Typography,
   Button,
   Stack
 } from "@mui/material";
-import { Cancel, ClearAll, Delete, RocketLaunch } from "@mui/icons-material";
+import { Cancel, ClearAll, Delete, RocketLaunch, SafetyDivider } from "@mui/icons-material";
 import { ShoppingCart } from "@mui/icons-material";
 import CartItem from "./cart-item";
+import OrderSummary from "./order-summary";
 
-function CartItems({ cartItems, removeFromCart, setCartItems }) {
+function CartItems({ cartItems, removeFromCart, setCartItems, setBadgeCount }) {
+  
+  const clearCart = () => {
+    setCartItems([]);
+    setBadgeCount(0);
+  };
   return (
     <Container maxWidth="md" className="cart-container">
       <Typography variant="h4" align="center" gutterBottom>
@@ -29,26 +36,33 @@ function CartItems({ cartItems, removeFromCart, setCartItems }) {
         <>
           <List>
             {cartItems.map((data) => (
-              <CartItem item={data} removeFromCart={removeFromCart} />
-              
+              <CartItem key={data.id} item={data} removeFromCart={removeFromCart} />
             ))}
           </List>
+
+          <Divider className="divider-summary">
+            <Chip label="Order Summary" />
+          </Divider>
+          <OrderSummary />
           <Stack direction="row" justifyContent="center" alignItems="center" spacing={2}>
             <Button
-              variant="contained"
+              color="error"
+              variant="outlined"
               startIcon={<Cancel />}
-              onClick={() => setCartItems([])}
+              onClick={clearCart}
             >
               Clear Cart
             </Button>
             <Button
               variant="contained"
+              color="primary"
               startIcon={<RocketLaunch />}
               onClick={() => setCartItems([])}
             >
               Place Order
             </Button>
           </Stack>
+
           <Stack direction="row" justifyContent="center" alignItems="center" spacing={2}></Stack>
         </>
       )}

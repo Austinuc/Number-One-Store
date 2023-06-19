@@ -4,3 +4,18 @@
 /* body {
         width: 100vmax !important;
 } */
+
+.product-details {
+    width: 30%;
+    height: 100vh;
+}
+
+.add-item-container {
+    background-color: #F0F0F1;
+}
+
+.form-bg {
+    background-color: white;
+    padding: 1rem;
+    border: solid .5px #828181;
+}

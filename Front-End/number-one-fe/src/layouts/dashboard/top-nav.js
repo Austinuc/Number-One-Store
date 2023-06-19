@@ -33,12 +33,18 @@ function togleCart() {
 }
 
 export const TopNav = (props) => {
+  const data = [
+    { name: "Rice", id: 1, qty: 2 },
+    { name: "Beans", id: 2, qty: 3 },
+    { name: "Chicken", id: 3, qty: 5 },
+    { name: "Meat", id: 4, qty: 1 },
+  ];
   const { onNavOpen } = props;
   
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
   const accountPopover = usePopover();
 
-  const [badgeCount, setBadgeCount] = useState(0);
+  const [badgeCount, setBadgeCount] = useState(data.length);
 
   
 
@@ -106,7 +112,7 @@ export const TopNav = (props) => {
             <Tooltip title="Cart">
               <IconButton aria-label="cart">
                 <Badge badgeContent={badgeCount} color="secondary">
-                  <Cart setBadgeCount={setBadgeCount} badgeCount={badgeCount}/>
+                  <Cart data={data} setBadgeCount={setBadgeCount} badgeCount={badgeCount}/>
                 </Badge>
               </IconButton>
             </Tooltip>

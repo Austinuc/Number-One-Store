@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
+import { useRouter } from "next/navigation";
 import Head from 'next/head';
 import { subDays, subHours } from 'date-fns';
 import ArrowDownOnSquareIcon from '@heroicons/react/24/solid/ArrowDownOnSquareIcon';
@@ -179,6 +180,7 @@ const useCustomerIds = (customers) => {
 };
 
 const Page = () => {
+  const route = useRouter();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const customers = useCustomers(page, rowsPerPage);
@@ -201,8 +203,9 @@ const Page = () => {
 
   const [showPopup, setShowPopup] = useState(false);
 
-  const togglePopup = () => {
-    setShowPopup(!showPopup);
+  const redirectToAddItemPage = () => {
+    route.push("/add-item")
+    // setShowPopup(!showPopup);
   };
 
   return (
@@ -229,10 +232,10 @@ const Page = () => {
                     <SvgIcon fontSize="small">{showPopup ? <Close /> : <PlusIcon />}</SvgIcon>
                   }
                   variant="contained"
-                  onClick={togglePopup}
+                  onClick={redirectToAddItemPage}
                 >
-                  {showPopup ? "Close" : "Add Item"}
-                  {/* Add */}
+
+                  Add Item
                 </Button>
               </div>
             </Stack>

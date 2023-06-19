@@ -4,6 +4,15 @@
   right: 0.5rem;
   padding-bottom: 2rem;
   padding-top: 1rem;
-  background-color: whitesmoke;
+  background-color: beige;
   border-radius: 1rem;
 }
+
+.divider-summary {
+  padding-bottom: 1rem;
+}
+
+.order-summary {
+  padding-bottom: 1rem;
+}
+

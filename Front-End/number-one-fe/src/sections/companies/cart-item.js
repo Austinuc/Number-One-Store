@@ -32,14 +32,12 @@ function CartItem({ item, removeFromCart }) {
 
   return (
     <React.Fragment key={item.id}>
-      {/* {console.log("id: " + item.item.id)} */}
-      {/* {console.log("Item name: " +item.item.name)} */}
       <ListItem>
         <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={3}>
           <Stack
             justifyContent="space-between"
             alignItems="center"
-            divider={<Divider orientation="vertical" flexItem />}
+            // divider={<Divider orientation="vertical" flexItem />}
             // direction={{ xs: "column", sm: "row" }}
             direction="row"
             spacing={{ xs: 1, sm: 2, md: 4 }}
@@ -54,15 +52,15 @@ function CartItem({ item, removeFromCart }) {
             <Typography variant="body2" color="text.secondary">
               #300
             </Typography>
-            <Stack direction="row" justifyContent="center" alignItems="center" spacing={3}>
-              <IconButton color="secondary" aria-label="add an alarm" onClick={increamentCount}>
+            <Stack direction="row" justifyContent="center" alignItems="center" spacing={1}>
+              <IconButton color="primary" aria-label="add an alarm" onClick={increamentCount}>
                 <AddCircle />
               </IconButton>
               <Typography variant="body2" color="text.secondary">
                 {count}
               </Typography>
               <IconButton
-                color="primary"
+                color="secondary"
                 aria-label="add to shopping cart"
                 onClick={decreamentCount}
               >
